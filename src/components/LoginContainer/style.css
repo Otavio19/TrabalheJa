@@ -1,0 +1,20 @@
+.loginContainer{
+    border: 0.2rem solid #0E377F;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    gap: 2rem;
+}
+
+.btnContainer{
+    display: flex;
+    gap: 1rem;
+}
+
+.contentContainer{
+    border: 0.2rem solid #0E377F;
+    width: 20rem;
+    padding: 1.5rem;
+}

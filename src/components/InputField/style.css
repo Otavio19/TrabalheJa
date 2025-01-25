@@ -1,0 +1,25 @@
+.inpt_box{
+    display: flex;
+    align-items: end;
+}
+
+.btn_box{
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border: 0.2rem solid #0E377F;
+    color: #0E377F;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0.2rem 1rem;
+
+    button{
+        color: #0E377F;
+    }
+}
+
+.btn_box:hover{
+    transform: scale(1.1);
+}
