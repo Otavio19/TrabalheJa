@@ -1,0 +1,35 @@
+.perfilBox
+{
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid red;
+    margin-right: 10rem;
+    position: relative;
+}
+
+.perfilBox:hover .perfilMenu
+{
+    display: block;
+}
+
+.perfilMenu
+{
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #e4e4e4;
+    top: 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: rgb(135, 135, 135);
+    display: none;
+}
+
+.perfilMenu:hover
+{
+    display: block;
+}
+
+.perfilMenu ul li{
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
