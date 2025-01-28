@@ -1,7 +1,10 @@
 //Style
 import './style.css';
 
-//Components
+//Component Custom
+import ModalLogin from "../ModalLogin";
+
+//Components MUI
 import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,9 +18,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
-import LoginModal from '../LoginModal';
 
-const pages = ["Home", "About", "Services", "Contact"];
+const pages = ["Home", "Vagas"
+  
+];
 
 export default function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -48,6 +52,11 @@ export default function NavBar() {
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
   };
+
+  const logout = () => {
+    sessionStorage.clear();
+    setIsLoggedIn(false);
+  }
 
   return (
     <AppBar position="static">
@@ -138,7 +147,7 @@ export default function NavBar() {
           />
         </Box>
 
-        {!isLoggedIn && (
+        {!isLoggedIn ? (
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -152,10 +161,22 @@ export default function NavBar() {
               Cadastrar-se
             </Button>
           </Box>
-        )}
+        ) :
+          <div className='perfilBox'>
+            <div className='perfilPhoto'>
 
-        {/* Modal de Login */}
-        <LoginModal
+            </div>
+            <div className='perfilMenu'>
+              <ul>
+                <li>Perfil</li>
+                <li>Curriculo</li>
+                <hr />
+                <li onClick={logout}>Sair</li>
+              </ul>
+            </div>
+          </div>}
+
+        <ModalLogin
           open={openLoginModal}
           onClose={handleCloseLoginModal}
           onLoginSuccess={handleLoginSuccess}
