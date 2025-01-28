@@ -15,7 +15,7 @@ const RegisterJob = () => {
     cultura_empresa: "",
     instrucoes: "",
     data_limite: "2025-02-15",
-    empresa_id: "f1e3bbaf-20fb-4ec2-8076-e02773be5a71", // Simulando um ID de empresa
+    empresa_id: "f1e3bbaf-20fb-4ec2-8076-e02773be5a71",
   });
 
   const handleChange = (e) => {

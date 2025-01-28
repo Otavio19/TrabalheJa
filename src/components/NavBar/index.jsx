@@ -17,7 +17,7 @@ import DecodeJwt from "../../Utils/DecodeJwt";
 import ModalLogin from "../ModalLogin";
 import './style.css'
 
-const pages = ["Home", "Vagas"];  // "Home" e "Vagas" são comuns, mas os outros itens mudam dependendo do nível
+const pages = ["Home", "Vagas"];
 
 export default function NavBar({ token }) {
   const decodeJwt = new DecodeJwt();
@@ -25,13 +25,13 @@ export default function NavBar({ token }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
-  const [userLevel, setUserLevel] = useState(null);  // Estado para o nível do usuário
+  const [userLevel, setUserLevel] = useState(null);
 
   useEffect(() => {
     const sessionUser = sessionStorage.getItem("user");
     if (sessionUser) {
       const decodedToken = decodeJwt.decodeToken(sessionUser);
-      setUserLevel(decodedToken?.nivel);  // Armazenando o nível do usuário
+      setUserLevel(decodedToken?.nivel);
       setIsLoggedIn(true);
     }
   }, []);
