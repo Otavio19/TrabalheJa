@@ -1,11 +1,6 @@
-//Style
-import './style.css';
-
-//Component Custom
-import ModalLogin from "../ModalLogin";
-
-//Components MUI
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,19 +13,27 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import DecodeJwt from "../../Utils/DecodeJwt";
+import ModalLogin from "../ModalLogin";
+import './style.css'
 
-const pages = ["Home", "Vagas"
-  
-];
+const pages = ["Home", "Vagas"];  // "Home" e "Vagas" são comuns, mas os outros itens mudam dependendo do nível
 
-export default function NavBar() {
+export default function NavBar({ token }) {
+  const decodeJwt = new DecodeJwt();
+
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [userLevel, setUserLevel] = useState(null);  // Estado para o nível do usuário
 
   useEffect(() => {
     const sessionUser = sessionStorage.getItem("user");
-    setIsLoggedIn(!!sessionUser);
+    if (sessionUser) {
+      const decodedToken = decodeJwt.decodeToken(sessionUser);
+      setUserLevel(decodedToken?.nivel);  // Armazenando o nível do usuário
+      setIsLoggedIn(true);
+    }
   }, []);
 
   const handleOpenNavMenu = (event) => {
@@ -50,13 +53,30 @@ export default function NavBar() {
   };
 
   const handleLoginSuccess = () => {
+    const sessionUser = sessionStorage.getItem("user");
+    if (sessionUser) {
+      const decodedToken = decodeJwt.decodeToken(sessionUser);
+      setUserLevel(decodedToken?.nivel);
+    }
     setIsLoggedIn(true);
   };
 
   const logout = () => {
     sessionStorage.clear();
     setIsLoggedIn(false);
-  }
+    setUserLevel(null);
+  };
+
+  const getMenuItems = () => {
+    if (userLevel === 1) {
+      return ["Vagas"];
+    } else if (userLevel === 2) {
+      return ["Vagas", "Cadastrar Vagas"];
+    } else if (userLevel > 2) {
+      return ["Painel","Vagas", "Cadastrar Vagas", "Gerenciar Usuários"];
+    }
+    return [];
+  };
 
   return (
     <AppBar position="static">
@@ -104,9 +124,11 @@ export default function NavBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
             >
-              {pages.map((page) => (
+              {getMenuItems().map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to={`/${page.toLowerCase().replace(' ', '-')}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -115,11 +137,13 @@ export default function NavBar() {
 
         {isLoggedIn && (
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+            {getMenuItems().map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ color: "white", display: "block" }}
+                component={Link}
+                to={`/${page.toLowerCase().replace(' ', '-')}`}
               >
                 {page}
               </Button>
@@ -148,12 +172,7 @@ export default function NavBar() {
         </Box>
 
         {!isLoggedIn ? (
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              gap: 1,
-            }}
-          >
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
             <Button color="inherit" variant="outlined" onClick={handleOpenLoginModal}>
               Acessar
             </Button>
@@ -161,12 +180,10 @@ export default function NavBar() {
               Cadastrar-se
             </Button>
           </Box>
-        ) :
-          <div className='perfilBox'>
-            <div className='perfilPhoto'>
-
-            </div>
-            <div className='perfilMenu'>
+        ) : (
+          <div className="perfilBox">
+            <div className="perfilPhoto"></div>
+            <div className="perfilMenu">
               <ul>
                 <li>Perfil</li>
                 <li>Curriculo</li>
@@ -174,7 +191,8 @@ export default function NavBar() {
                 <li onClick={logout}>Sair</li>
               </ul>
             </div>
-          </div>}
+          </div>
+        )}
 
         <ModalLogin
           open={openLoginModal}

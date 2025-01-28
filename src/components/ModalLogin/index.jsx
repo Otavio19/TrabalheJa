@@ -5,8 +5,12 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import DecodeJwt from '../../Utils/DecodeJwt'
 
 const LoginModal = ({ open, onClose, onLoginSuccess }) => {
+
+  const decodeJwt = new DecodeJwt()
+
   const [loginData, setLoginData] = useState({ email: "", senha: "" });
   const [loginError, setLoginError] = useState("");
 
@@ -28,7 +32,10 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
       const result = await response.json();
 
       if (response.ok) {
-        sessionStorage.setItem("user", JSON.stringify(result.user));
+        sessionStorage.setItem("user", JSON.stringify(result.token));
+
+        decodeJwt.decodeToken(result.token);
+
         onLoginSuccess();
         onClose();
       } else {

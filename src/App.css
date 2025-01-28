@@ -9,6 +9,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
+  background-color: #e1e0e0;
 }
 
 a {
@@ -45,4 +46,14 @@ img {
 
 html {
   background-color: transparent;
+}
+
+
+.mainContainer
+{
+  width: 90%;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
