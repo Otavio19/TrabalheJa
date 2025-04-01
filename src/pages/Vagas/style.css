@@ -1,0 +1,28 @@
+.cardMagin{
+    margin: 2rem 0;
+    width: 80%;
+}
+
+.boxHome{
+    margin: 5rem 0;
+}
+
+.homeTitle{
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.mini-cards{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.miniCardParagraph{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}

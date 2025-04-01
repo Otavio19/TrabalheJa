@@ -13,18 +13,25 @@ import MenuIcon from "@mui/icons-material/Menu";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
-import DecodeJwt from "../../Utils/DecodeJwt";
-import ModalLogin from "../ModalLogin";
-import './style.css'
+import { useNavigate } from "react-router-dom";
 
-const pages = ["Home", "Vagas"];
+//Utils
+import './style.css'
+import DecodeJwt from "../../Utils/DecodeJwt";
+
+//components
+import ModalLogin from "../ModalLogin";
+import ModalRegister from "../ModalRegister"
 
 export default function NavBar({ token }) {
   const decodeJwt = new DecodeJwt();
+  const navigate = useNavigate();
+
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [ openRegisterModal, setOpenRegisterModal] = useState(true);
   const [userLevel, setUserLevel] = useState(null);
 
   useEffect(() => {
@@ -48,8 +55,13 @@ export default function NavBar({ token }) {
     setOpenLoginModal(true);
   };
 
+  const handleOpenRegisterModal = () =>{
+    setOpenRegisterModal(true);
+  }
+
   const handleCloseLoginModal = () => {
     setOpenLoginModal(false);
+    setOpenRegisterModal(false);
   };
 
   const handleLoginSuccess = () => {
@@ -65,6 +77,9 @@ export default function NavBar({ token }) {
     sessionStorage.clear();
     setIsLoggedIn(false);
     setUserLevel(null);
+    navigate("/");
+    window.location.reload();
+
   };
 
   const getMenuItems = () => {
@@ -176,7 +191,7 @@ export default function NavBar({ token }) {
             <Button color="inherit" variant="outlined" onClick={handleOpenLoginModal}>
               Acessar
             </Button>
-            <Button color="secondary" variant="contained">
+            <Button color="secondary" variant="contained" onClick={handleOpenRegisterModal}>
               Cadastrar-se
             </Button>
           </Box>
@@ -198,6 +213,11 @@ export default function NavBar({ token }) {
           open={openLoginModal}
           onClose={handleCloseLoginModal}
           onLoginSuccess={handleLoginSuccess}
+        />
+
+        <ModalRegister 
+          open={openRegisterModal}
+          onClose={handleCloseLoginModal}
         />
       </Toolbar>
     </AppBar>

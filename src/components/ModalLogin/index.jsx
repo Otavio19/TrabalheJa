@@ -9,8 +9,6 @@ import DecodeJwt from '../../Utils/DecodeJwt'
 
 const LoginModal = ({ open, onClose, onLoginSuccess }) => {
 
-  const decodeJwt = new DecodeJwt()
-
   const [loginData, setLoginData] = useState({ email: "", senha: "" });
   const [loginError, setLoginError] = useState("");
 
@@ -32,18 +30,25 @@ const LoginModal = ({ open, onClose, onLoginSuccess }) => {
       const result = await response.json();
 
       if (response.ok) {
+        var decodeJwt = new DecodeJwt()
+
         sessionStorage.setItem("user", JSON.stringify(result.token));
 
         decodeJwt.decodeToken(result.token);
 
         onLoginSuccess();
+        window.location.reload();
         onClose();
       } else {
-        setLoginError(result.message || "Falha ao logar.");
+        setLoginError(result.error || "Falha ao logar.");
+
       }
     } catch (error) {
       setLoginError("Erro ao conectar ao servidor.");
+      console.log(error)
     }
+
+    setLoginData({ email: "", senha: "" })
   };
 
   return (

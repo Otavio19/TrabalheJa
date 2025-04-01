@@ -1,0 +1,18 @@
+.cardBox {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 1.5rem 5rem;
+    border-radius: 1rem;
+}
+
+.cardBox:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease-in-out;
+}
+
+.success{
+    color: green;
+}
+
+.btnCard {
+    margin-top: 1rem;
+}

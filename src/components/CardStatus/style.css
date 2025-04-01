@@ -1,0 +1,21 @@
+.cardStatusBox{
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+    gap: 2rem;
+    border-radius: 0.5rem;
+    cursor: default;
+}
+
+.iconCard{
+    font-size: 1.8rem;
+    display: flex;
+}
+
+.textCard{
+    border-left: 1px solid grey;
+    padding-left: 1rem;
+}
