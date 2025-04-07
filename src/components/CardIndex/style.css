@@ -1,0 +1,22 @@
+.card-index-container{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 20rem;
+    padding: 1rem;
+    margin-top: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.iconCard{
+    color: var(--blue-color);
+}
+
+.title-card{
+    font-weight: bold;
+}
+
+.description-card{
+    color: var(--grey-color);
+}

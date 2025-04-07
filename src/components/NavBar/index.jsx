@@ -31,7 +31,7 @@ export default function NavBar({ token }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
-  const [ openRegisterModal, setOpenRegisterModal] = useState(true);
+  const [ openRegisterModal, setOpenRegisterModal] = useState(false);
   const [userLevel, setUserLevel] = useState(null);
 
   useEffect(() => {
@@ -200,7 +200,7 @@ export default function NavBar({ token }) {
             <div className="perfilPhoto"></div>
             <div className="perfilMenu">
               <ul>
-                <li>Perfil</li>
+                <Link to="/perfil">Perfil</Link>
                 <li>Curriculo</li>
                 <hr />
                 <li onClick={logout}>Sair</li>

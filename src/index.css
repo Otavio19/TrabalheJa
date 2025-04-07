@@ -1,3 +1,27 @@
 :root{
-    --success-color: #3BFFC7
+    --success-color: #3BFFC7;
+    --blue-color: #3B82F6;
+    --grey-color: #4B5563;
+}
+
+.title-box{
+    padding: 5rem 0;
+}
+
+h1{
+    color: #111827;
+    font-size: 51px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-blue{
+    color: var(--blue-color);
+}
+
+.subtitle{
+    color: var(--grey-color);
+    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
 }

@@ -10,9 +10,11 @@ import Vagas from "./pages/Vagas/index.jsx";
 import Users from "./pages/Users/index.jsx";
 import DashBoard from "./pages/Dashboard/index.jsx";
 import SemPermissao from "./pages/SemPermissao/index.jsx";
+import Perfil from "./pages/Perfil"
 
 // Components
 import ProtectedRoute from "./components/ProtectedRoute/index.jsx";
+import Index from "./pages/Index/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +22,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "painel",
+        path: "/",
+        element: < Index/>
+      },
+      {
+        path: "/painel",
         element: (
           <ProtectedRoute allowedLevels={[2, 3]}>
             <DashBoard />
@@ -28,7 +34,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "cadastrar-vagas",
+        path: "/cadastrar-vagas",
         element: (
           <ProtectedRoute allowedLevels={[2, 3]}>
             <CadastrarVagas />
@@ -36,15 +42,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "",
-        element: <Vagas />, // Página aberta para todos
-      },
-      {
         path: "/vagas",
         element: <Vagas />, // Página aberta para todos
       },
       {
-        path: "gerenciar-usuarios",
+        path: "/gerenciar-usuarios",
         element: (
           <ProtectedRoute allowedLevels={[3]}>
             <Users />
@@ -52,9 +54,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "sem-permissao",
-        element: <SemPermissao />,
+        path: "/perfil",
+        element: (
+            <Perfil />
+        ),
       },
+      {
+        path: "/sem-permissao",
+        element: <SemPermissao />,
+      }
     ],
   },
 ]);

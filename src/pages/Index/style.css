@@ -1,0 +1,45 @@
+.index-container{
+    width: 80%;
+    margin: auto;
+}
+
+.search-box
+{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: auto;
+    padding: 1.8rem 2rem;
+    display: flex;
+    gap: 2rem;
+    border-radius: 0.8rem;
+}
+
+.input-box{
+    border: 1px solid var(--grey-color);
+    width: 80%;
+    height: 50px;
+    padding: 17px;
+    font-size: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.button-box{
+    background-color: var(--blue-color);
+    padding: 0.2rem 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #ffff;
+}
+
+.button-box:hover{
+    transform: scale(1.1);
+}
+
+.cards-box{
+    display: flex;
+    justify-content: space-between;
+}
