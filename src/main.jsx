@@ -7,6 +7,7 @@ import App from "./App.jsx";
 // Pages
 import CadastrarVagas from "./pages/CadastrarVagas/index.jsx";
 import Vagas from "./pages/Vagas/index.jsx";
+import Vaga from "./pages/Vaga/index.jsx";
 import Users from "./pages/Users/index.jsx";
 import DashBoard from "./pages/Dashboard/index.jsx";
 import SemPermissao from "./pages/SemPermissao/index.jsx";
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/sem-permissao",
         element: <SemPermissao />,
+      },
+      {
+        path: "/vaga/:id",
+        element: <Vaga />
       }
     ],
   },

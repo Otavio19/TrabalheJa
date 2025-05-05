@@ -1,7 +1,8 @@
 import "./style.css"
 import { TextField, Button, Grid2 } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const CardVaga = ({btnText, titulo, faixa_salarial, localizacao, horario_trabalho, eventButton}) => {
+const CardVaga = ({btnText, titulo, faixa_salarial, localizacao, horario_trabalho, eventButton, link}) => {
     return (
         <Grid2 className="cardBox">
             <Grid2 container>
@@ -23,7 +24,7 @@ const CardVaga = ({btnText, titulo, faixa_salarial, localizacao, horario_trabalh
                 </Grid2>
             </Grid2>
             <Grid2 container className="btnCard">
-                <Button variant="contained" onClick={eventButton}>{btnText}</Button>
+                <Button variant="contained" onClick={eventButton} component={Link} to={link}>{btnText}</Button>
             </Grid2>
         </Grid2>
     )
