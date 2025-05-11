@@ -91,7 +91,7 @@ const Vaga = () => {
         {vagas.map((vaga) => (
           <div className="cardMagin" key={vaga.id}>
             <CardVaga key={vaga.id} titulo={vaga.titulo} localizacao={vaga.localizacao} horario_trabalho={vaga.horario_trabalho} faixa_salarial={vaga.faixa_salarial}
-             btnText={token ? 'Acessar' : 'Logar-se'} eventButton={ token ? "" : handleOpenLoginModal } link={token? "/vaga" : ""}/>
+             btnText={token ? 'Acessar' : 'Logar-se'} eventButton={ token ? "" : handleOpenLoginModal } link={token? "/vaga/" + vaga.id : ""}/>
           </div>
         ))}
       </ul>

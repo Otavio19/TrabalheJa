@@ -1,16 +1,16 @@
-import { IoLocationOutline } from "react-icons/io5";
 import './style.css'
 
 import { Grid2 } from "@mui/material";
 
-const CardDetail = ({cardSize, title}) => {
+const CardDetail = ({icon, cardSize, title, content }) => {
+    console.log("Content: ", content)
     return (
-            <Grid2 size={cardSize} className="cardDetailBox">
-                <h2><IoLocationOutline /> {title}</h2>
-                <p>
-                    Sorocaba-SP
-                </p>
-            </Grid2>
+        <Grid2 size={cardSize} className="cardDetailBox">
+            <h2>{icon} {title}</h2>
+            <p>
+                { content }
+            </p>
+        </Grid2>
     )
 }
 

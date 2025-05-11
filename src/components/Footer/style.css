@@ -1,0 +1,40 @@
+.footerTitle{
+    background-color: var(--blue-color);
+    padding: 3rem 0;
+    text-align: center;
+
+    h1{
+        color: #fff;
+        font-size: 2rem;
+    }
+}
+
+.footerBox {
+    background-color: #1f2937;
+    color: #fff;
+    padding: 0 0 3rem 0;
+
+    .footerContent {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #9ca3af;
+        width: 80%;
+        margin: 4rem auto 0 auto;
+        padding-bottom: 1.5rem;
+
+        li, p{
+            color: #9ca3af;
+            transition: 0.3s;
+        }
+
+        li:hover{
+            color: #fff;
+        }
+    }
+}
+
+.direitos{
+    text-align: center;
+    padding: 1.5rem 0;
+    color: #9ca3af;
+}

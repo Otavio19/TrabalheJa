@@ -18,7 +18,7 @@ const CardVaga = ({btnText, titulo, faixa_salarial, localizacao, horario_trabalh
                     <h4>Carga Horária</h4>
                     <h2>{horario_trabalho}</h2>
                 </Grid2>
-                <Grid2 size={{ xs: 3, md: 3 }}>
+                <Grid2 size={{ xs: 4, md: 4 }}>
                     <h4>Salário</h4>
                     <h2 className="success">{faixa_salarial}R$</h2>
                 </Grid2>

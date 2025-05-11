@@ -10,6 +10,7 @@ import { FiAward } from "react-icons/fi";
 import CardIndex from '../../components/CardIndex';
 
 const Index = () => {
+
     return (
         <>
             <div className="index-container">
