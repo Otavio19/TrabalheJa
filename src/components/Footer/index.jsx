@@ -1,6 +1,6 @@
 import './style.css'
 import { Grid2, Button } from "@mui/material";
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div className='footerBox'>
@@ -8,7 +8,7 @@ const Footer = () => {
                 <h1>Pronto para dar o proximo passo na sua carreira?</h1>
                 <p>Milhares de vagas para você. Encontre a que combina com você!</p>
                 <Grid2 container spacing={2} justifyContent="center" marginTop={4}>
-                    <Button variant="outlined" color="">Explorar Vagas</Button>
+                    <Button variant="outlined" color="" component={Link} to="/vagas">Explorar Vagas</Button>
                     <Button variant="contained" color="success">Criar Conta</Button>
                 </Grid2>
 

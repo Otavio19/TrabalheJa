@@ -88,7 +88,7 @@ export default function NavBar({ token }) {
     } else if (userLevel === 2) {
       return ["Vagas", "Cadastrar Vagas"];
     } else if (userLevel > 2) {
-      return ["Painel","Vagas", "Cadastrar Vagas", "Gerenciar Usuários"];
+      return ["Painel","Vagas", "Cadastrar Vagas", "Gerenciar Usuarios"];
     }
     return [];
   };

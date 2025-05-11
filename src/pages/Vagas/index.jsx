@@ -6,6 +6,7 @@ import "./style.css"
 import CardVaga from "../../components/CardVaga"
 import CardStatus from "../../components/CardStatus"
 import ModalLogin from "../../components/ModalLogin"
+import { TextField, Button, Grid2 } from "@mui/material";
 
 //Utils
 import { getUserToken } from "../../utils/auth"
@@ -50,7 +51,7 @@ const Vaga = () => {
       });
   };
 
-  const handleCloseLoginModal = () =>{
+  const handleCloseLoginModal = () => {
     setOpenLoginModal(false)
   }
 
@@ -70,14 +71,14 @@ const Vaga = () => {
 
   return (
     <div>
-      
+
       <div className='boxHome'>
-        {token ? <div className='homeTitle'>Vagas Cadastradas</div> : 
+        {token ? <div className='homeTitle'>Vagas Cadastradas</div> :
           <div className='homeTitle'>
             Conectamos você às melhores oportunidades de trabalho!
             <div className="mini-cards">
-              <CardStatus  icon={<BiRocket/>} text="83 Vagas Ativas!"/>
-              <CardStatus  icon={<BiSolidHeart/>} text="5 Empresas Parceiras!"/>
+              <CardStatus icon={<BiRocket />} text="83 Vagas Ativas!" />
+              <CardStatus icon={<BiSolidHeart />} text="5 Empresas Parceiras!" />
             </div>
             <p className="miniCardParagraph">Confirá nossas vagas a baixo!</p>
           </div>
@@ -87,20 +88,18 @@ const Vaga = () => {
       {loading && <p>Carregando...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <ul>
+      <Grid2 container spacing={4}>
         {vagas.map((vaga) => (
-          <div className="cardMagin" key={vaga.id}>
-            <CardVaga key={vaga.id} titulo={vaga.titulo} localizacao={vaga.localizacao} horario_trabalho={vaga.horario_trabalho} faixa_salarial={vaga.faixa_salarial}
-             btnText={token ? 'Acessar' : 'Logar-se'} eventButton={ token ? "" : handleOpenLoginModal } link={token? "/vaga/" + vaga.id : ""}/>
-          </div>
+          <CardVaga sizeCard={11} key={vaga.id} titulo={vaga.titulo} localizacao={vaga.localizacao} horario_trabalho={vaga.horario_trabalho} faixa_salarial={vaga.faixa_salarial}
+            btnText={token ? 'Acessar' : 'Logar-se'} eventButton={token ? "" : handleOpenLoginModal} link={token ? "/vaga/" + vaga.id : ""} />
         ))}
-      </ul>
+      </Grid2>
 
       <ModalLogin
-                open={openLoginModal}
-                onClose={handleCloseLoginModal}
-                onLoginSuccess={handleLoginSuccess}
-              />
+        open={openLoginModal}
+        onClose={handleCloseLoginModal}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </div>
   );
 };
