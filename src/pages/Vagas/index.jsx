@@ -9,8 +9,8 @@ import ModalLogin from "../../components/ModalLogin"
 import { TextField, Button, Grid2 } from "@mui/material";
 
 //Utils
-import { getUserToken } from "../../utils/auth"
-import DecodeJwt from '../../Utils/DecodeJwt'
+import { getUserToken } from "../../utils/auth.jsx"
+import DecodeJwt from '../../utils/DecodeJwt.jsx'
 
 //Icons
 import { BiRocket } from "react-icons/bi";
