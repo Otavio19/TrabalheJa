@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { getUserLevel } from "../../utils/auth";
+import { getUserLevel } from "../../utils/auth.jsx";
 
 const ProtectedRoute = ({ children, allowedLevels }) => {
   const userLevel = getUserLevel();
