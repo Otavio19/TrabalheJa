@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 //Utils
 import './style.css'
-import DecodeJwt from "../../Utils/DecodeJwt";
+import DecodeJwt from "../../utils/DecodeJwt";
 
 //components
 import ModalLogin from "../ModalLogin";
