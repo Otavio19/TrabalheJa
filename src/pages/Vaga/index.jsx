@@ -22,7 +22,7 @@ const Vaga = () => {
     const notFound = "Não Informado."
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/api/vaga/${id}`)
+        axios.get(`https://trabalhe-ja-api.vercel.app/api/vaga/${id}`)
             .then(function (response) {
                 console.log(response.data);
                 setVaga(response.data)

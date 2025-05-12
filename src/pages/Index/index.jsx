@@ -24,7 +24,7 @@ const Index = () => {
 
     const getVagas = () => {
         axios
-            .get(`http://localhost:3000/api/vagas`)
+            .get(`https://trabalhe-ja-api.vercel.app/api/vagas`)
             .then((response) => {
                 setVagas(response.data);
             })

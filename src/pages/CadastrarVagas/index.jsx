@@ -66,7 +66,7 @@ const CadastrarVagas = () => {
   
       const formDataWithEmpresa = { ...formData, empresa_id: tokenPayload.empresa_id };
   
-      axios.post("http://localhost:3000/api/vagas", formDataWithEmpresa)
+      axios.post("https://trabalhe-ja-api.vercel.app/api/vagas", formDataWithEmpresa)
         .then(response => {
           setMessage("Vaga cadastrada com sucesso!");
           setSeverity("success");

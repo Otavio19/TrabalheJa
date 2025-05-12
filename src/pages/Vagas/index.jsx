@@ -38,7 +38,7 @@ const Vaga = () => {
     console.log("Endpoint usado:", endpoint);
 
     axios
-      .get(`http://localhost:3000/api/vagas${endpoint}`)
+      .get(`https://trabalhe-ja-api.vercel.app/api/vagas${endpoint}`)
       .then((response) => {
         setVagas(response.data);
       })
